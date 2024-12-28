@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductCard from '../components/ProductCard.astro';
+
+const featuredProducts = [
+  {
+    id: 1,
+    name: 'Chaqueta Oversized',
+    price: 89.99,
+    image: '/products/jacket.jpg',
+  },
+  {
+    id: 2,
+    name: 'Pantalón Cargo',
+    price: 69.99,
+    image: '/products/pants.jpg',
+  },
+  {
+    id: 3,
+    name: 'Camiseta Gráfica',
+    price: 39.99,
+    image: '/products/tshirt.jpg',
+  },
+];
+---
+
+<Layout title="Inicio">
+  <section class="hero min-h-screen flex items-center justify-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-kaya-dark/50 to-kaya-dark"></div>
+    <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
+      <h1 class="text-6xl md:text-8xl font-bold mb-6">KAYA</h1>
+      <p class="text-xl md:text-2xl mb-8 font-mono">INDUMENTARIA BRUTALISTA</p>
+      <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block">
+        EXPLORAR COLECCIÓN
+      </a>
+    </div>
+  </section>
+
+  <section class="featured-products py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-12" data-aos="fade-right">DESTACADOS</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredProducts.map(product => (
+          <div data-aos="fade-up">
+            <ProductCard {...product} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+.hero {
+  background-image: url('/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+</style>

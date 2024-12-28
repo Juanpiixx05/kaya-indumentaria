@@ -1,0 +1,67 @@
+---
+import '@fontsource/space-grotesk';
+import '@fontsource/space-mono';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import 'aos/dist/aos.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Kaya Indumentaria - Moda Brutalista" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Kaya Indumentaria</title>
+  </head>
+  <body class="bg-kaya-dark text-kaya-light min-h-screen">
+    <Navbar />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<script>
+  import AOS from 'aos';
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
+</script>
+
+<style is:global>
+  :root {
+    --font-sans: 'Space Grotesk', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  .brutalist-border {
+    border: 2px solid #F5F5F5;
+    transition: all 0.3s ease;
+  }
+
+  .brutalist-border:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 4px 4px 0 #F5F5F5;
+  }
+</style>

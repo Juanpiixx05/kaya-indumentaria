@@ -1,0 +1,74 @@
+---
+const navItems = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Galería', path: '/galeria' },
+  { name: 'Nosotros', path: '/nosotros' },
+  { name: 'Contacto', path: '/contacto' },
+];
+
+const socialLinks = [
+  { name: 'Instagram', url: 'https://instagram.com/kaya', icon: 'instagram.svg' },
+  { name: 'WhatsApp', url: 'https://wa.me/1234567890', icon: 'whatsapp.svg' },
+];
+---
+
+<nav class="fixed w-full top-0 z-50 bg-kaya-dark/90 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <div class="flex-shrink-0">
+        <a href="/" class="text-2xl font-mono font-bold">KAYA</a>
+      </div>
+      
+      <!-- Mobile menu button -->
+      <button id="menu-toggle" class="md:hidden brutalist-border p-2">
+        <span class="sr-only">Menu</span>
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <!-- Desktop menu -->
+      <div class="hidden md:flex items-center space-x-8">
+        {navItems.map(item => (
+          <a href={item.path} class="brutalist-border px-4 py-2 hover:text-kaya-accent">
+            {item.name}
+          </a>
+        ))}
+        <div class="flex items-center space-x-4">
+          {socialLinks.map(link => (
+            <a href={link.url} target="_blank" rel="noopener noreferrer" 
+               class="brutalist-border p-2 hover:text-kaya-accent">
+              {link.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      {navItems.map(item => (
+        <a href={item.path} class="block brutalist-border px-4 py-2 mb-2">
+          {item.name}
+        </a>
+      ))}
+      {socialLinks.map(link => (
+        <a href={link.url} target="_blank" rel="noopener noreferrer" 
+           class="block brutalist-border px-4 py-2 mb-2">
+          {link.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>
