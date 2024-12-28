@@ -6,27 +6,37 @@ const currentYear = new Date().getFullYear();
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <div data-aos="fade-up">
-        <h3 class="text-2xl font-bold mb-4">KAYA</h3>
-        <p class="font-mono">Indumentaria brutalista para el mundo moderno.</p>
+        <h3 class="text-2xl font-bold mb-4">Kaya.ind</h3>
+        <p class="font-mono">Indumentaria</p>
       </div>
       <div data-aos="fade-up" data-aos-delay="100">
-        <h4 class="text-xl font-bold mb-4">Contacto</h4>
-        <ul class="space-y-2 font-mono">
-          <li>Email: info@kaya.com</li>
-          <li>Tel: +54 11 1234-5678</li>
-          <li>Buenos Aires, Argentina</li>
-        </ul>
+        <h4 class="text-xl font-bold mb-4">Contactanos</h4>
+        <form action="https://formsubmit.co/327021ed980c060bab386d35e46a3092 " method="POST">
+          <label for="email">Email</label><br>
+          <input class="brutalist-border px-4 py-2" type="email" id="email" name="email" required><br><br>
+          <label for="subject">Asunto</label><br>
+          <input class="brutalist-border px-4 py-2" type="text" id="subject" name="subject" required><br><br>
+          <label for="message">Mensaje</label><br>
+          <textarea class="brutalist-border px-4 py-2" id="message" name="message" required></textarea><br><br>
+          <button type="submit" class="brutalist-border p-2">Enviar Mensaje</button>
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="http://localhost:4321/">  
+        </form>
       </div>
       <div data-aos="fade-up" data-aos-delay="200">
         <h4 class="text-xl font-bold mb-4">Síguenos</h4>
         <div class="flex space-x-4">
-          <a href="https://instagram.com/kaya" target="_blank" rel="noopener noreferrer" 
+          <a href="https://www.instagram.com/indumentaria.kaya" target="_blank" rel="noopener noreferrer" 
              class="brutalist-border p-2">
             Instagram
           </a>
           <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" 
              class="brutalist-border p-2">
             WhatsApp
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61559965091694" target="_blank" rel="noopener noreferrer" 
+            class="brutalist-border p-2">
+              Facebook
           </a>
         </div>
       </div>
