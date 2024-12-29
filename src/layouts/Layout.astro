@@ -39,11 +39,14 @@ const { title } = Astro.props;
 </script>
 
 <style is:global>
-  :root {
-    --font-sans: 'Space Grotesk', sans-serif;
-    --font-mono: 'Space Mono', monospace;
-  }
-  
+
+    @font-face {
+      font-family:"Konstant Grotesk Neue" ;
+      src: url(/public/fonts/NeueKonstantGrotesk-Book.otf) format('truetype');
+      font-style: normal;
+      font-display: swap;
+      font-weight: normal;
+    }
   * {
     margin: 0;
     padding: 0;
@@ -51,26 +54,25 @@ const { title } = Astro.props;
   }
 
   body {
-    font-family: var(--font-sans);
+    font-family: "Konstant Grotesk Neue", serif;
     overflow-x: hidden;
   }
 
   .brutalist-border {
-    border: 2px solid #F5F5F5;
+    border: 2px solid #201f1f;
     transition: all 0.3s ease;
   }
 
   .brutalist-border:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 4px 4px 0 #F5F5F5;
+    box-shadow: 4px 4px 0 #292929;
   }
 
   .form-input {
-    border: 2px solid #F5F5F5;
+    border: 2px solid #131313;
     transition: all 0.3s ease;
-    background-color: black;
+    background-color: rgb(207, 207, 207);
   }  .form-input:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 4px 4px 0 #F5F5F5;
+    box-shadow: 4px 4px 0 #292929;
   }
-</style>
