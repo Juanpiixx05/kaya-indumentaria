@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 
 const featuredProducts = [
   {
@@ -27,7 +28,11 @@ const featuredProducts = [
 <Layout title="Inicio">
   <section class="hero min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-kaya-dark/50 to-kaya-dark"></div>
+    <div class="flex self-start pl-5 py-5 pt-5 mt-8 ">
+      <ThemeToggle />
+      </div>
     <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
+      
       <img src="src/images/Kaya-Indumentaria-inicio.avif" class="mx-auto mb-8 max-w-xl">
   <div class="absolute inset-0 bg-gradient-to-b from-kaya-dark/50 to-kaya-dark"></div>
   </section>
