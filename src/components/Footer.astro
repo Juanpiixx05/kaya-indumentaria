@@ -9,20 +9,27 @@ const currentYear = new Date().getFullYear();
         <h3 class="text-2xl font-bold mb-4">Kaya.ind</h3>
         <p class="font-mono">Indumentaria</p>
       </div>
+
       <div data-aos="fade-up" data-aos-delay="100">
-        <h4 class="text-xl font-bold mb-4">Contactanos</h4>
+        <h4 class="text-xl font-bold mb-4">Contáctanos</h4>
         <form action="https://formsubmit.co/327021ed980c060bab386d35e46a3092 " method="POST">
           <label for="email">Email</label><br>
-          <input class="brutalist-border px-4 py-2" type="email" id="email" name="email" required><br><br>
+          <input class="form-input px-4 py-2" type="email" id="email" name="email" required><br><br>
+          
           <label for="subject">Asunto</label><br>
-          <input class="brutalist-border px-4 py-2" type="text" id="subject" name="subject" required><br><br>
+          <input class="form-input px-4 py-2" type="text" id="subject" name="subject" required><br><br>
+          
           <label for="message">Mensaje</label><br>
-          <textarea class="brutalist-border px-4 py-2" id="message" name="message" required></textarea><br><br>
-          <button type="submit" class="brutalist-border p-2">Enviar Mensaje</button>
+          
+          <textarea class="form-input px-4 py-2" id="message" name="message" required></textarea><br><br>
+          
+          <button type="submit" class="form-input p-2">Enviar Mensaje</button>
+          
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="http://localhost:4321/">  
         </form>
       </div>
+      
       <div data-aos="fade-up" data-aos-delay="200">
         <h4 class="text-xl font-bold mb-4">Síguenos</h4>
         <div class="flex space-x-4">
