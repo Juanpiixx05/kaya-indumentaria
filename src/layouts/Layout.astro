@@ -1,10 +1,9 @@
 ---
-import '@fontsource/space-grotesk';
-import '@fontsource/space-mono';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import 'aos/dist/aos.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import tailwindConfig from '../../tailwind.config.mjs';
 
 interface Props {
   title: string;
@@ -17,10 +16,10 @@ const { title } = Astro.props;
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Kaya Indumentaria - Moda Brutalista" />
+    <meta name="description" content="Kaya Indumentaria - Vanguardia en estilo" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | Kaya Indumentaria</title>
+    <link rel="icon" type="image/svg+xml" href="../images/kaya-ind-favicon.jpg" />
+    <title>Kaya Indumentaria | {title} </title>
   </head>
   <body class="bg-kaya-dark text-kaya-light min-h-screen">
     <Navbar />
@@ -40,40 +39,67 @@ const { title } = Astro.props;
 </script>
 
 <style is:global>
-
-    @font-face {
-      font-family:"Konstant Grotesk Neue" ;
-      src: url(/public/fonts/NeueKonstantGrotesk-Book.otf) format('truetype');
-      font-style: normal;
-      font-display: swap;
-      font-weight: normal;
-    }
+  @font-face {
+    font-family:"Konstant Grotesk Neue" ;
+    src: url(/public/fonts/NeueKonstantGrotesk-Book.otf) format('truetype');
+    font-style: normal;
+    font-display: swap;
+    font-weight: normal;
+  }
+  body {
+    font-family: "Konstant Grotesk Neue", serif;
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s;
+  }
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
-  body {
-    font-family: "Konstant Grotesk Neue", serif;
-    overflow-x: hidden;
-  }
-
   .brutalist-border {
+    background-color: var(--bg-color);
+    color: var(--text-color);
     border: 2px solid #201f1f;
     transition: all 0.3s ease;
   }
 
   .brutalist-border:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 4px 4px 0 #292929;
+    box-shadow: 4px 4px 0 var(--bg-color);
   }
 
   .form-input {
     border: 2px solid #131313;
     transition: all 0.3s ease;
-    background-color: rgb(207, 207, 207);
+    background-color: rgb(240, 240, 240);
   }  .form-input:hover {
     transform: translate(-4px, -4px);
     box-shadow: 4px 4px 0 #292929;
   }
+  :root {
+  --gradient-1: #474747;
+  --gradient-2: #0c0b0c;
+  --gradient-3: #161518;
+  --bg-color: #f4f4f4;
+  --text-color: #000000;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #f1e6e6;
+  --text-color: #000000;
+  --gradient-1: #777777;
+  --gradient-2: #9c9c9c;
+  --gradient-3: #f0f0f0;
+}
+
+:root[data-theme="dark"] {
+  --bg-color: #0b0b0b;
+  --text-color: #e6e6ff;
+  --gradient-1: #474747;
+  --gradient-2: #0c0b0c;
+  --gradient-3: #161518;
+}
+

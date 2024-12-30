@@ -26,25 +26,17 @@ const featuredProducts = [
 ---
 
 <Layout title="Inicio">
-  <section class="hero min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-kaya-dark/50 to-kaya-dark"></div>
-    <div class="flex self-start pl-10 py-5 pt-5 mt-8 relative">
+  <section class="flex flex-col items-center justify-center relative overflow-hidden">
+    <div class="absolutebg-gradient-to-b from-kaya-dark/50 to-kaya-dark">
+    <div class="flex-start pl-10 py:10 pt-10 mt-10">
       <ThemeToggle />
-      </div>
     <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
-      
-      <img src="src/images/Kaya-Indumentaria-inicio.avif" class="mx-auto mb-8 max-w-xl">
-  <div class="absolute inset-0 bg-gradient-to-b from-kaya-dark/50 to-kaya-dark"></div>
-  </section>
-
-  <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
-    <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block">
-      EXPLORAR COLECCIÓN
-    </a>
+    <img src="src/images/Kaya-Indumentaria-inicio.svg" width="1920" height="1281" class="block mx-auto mt-8">
+    <div class="absolute bg-gradient-to-b from-kaya-dark/50 to-kaya-dark content-normal">
   </div>
-
-  <section class="featured-products py-20">
-    <div class="container mx-auto px-4">
+  </section>
+  <section class="featured-products">
+    <div class="container mx-auto px-4 mt-8">
       <h2 class="text-4xl font-bold mb-12" data-aos="fade-right">DESTACADOS</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {featuredProducts.map(product => (
@@ -55,11 +47,22 @@ const featuredProducts = [
       </div>
     </div>
   </section>
+  <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
+    <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block mt-2">
+      EXPLORAR COLECCIÓN
+    </a>
+  </div>
 </Layout>
-
 <style>
-.hero {
-  background-size: cover;
-  background-position: flex;
-}
-</style>
+  .hero {
+    background-size: cover;
+    background-position: flex;
+  }
+  img{
+          background-color: var(--bg-color);
+          color: var(--text-color)
+        }
+
+
+  </style>
+
