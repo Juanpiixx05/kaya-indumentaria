@@ -21,7 +21,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="../images/kaya-ind-favicon.jpg" />
     <title>Kaya Indumentaria | {title} </title>
   </head>
-  <body class="bg-kaya-dark text-kaya-light min-h-screen">
+  <body class="bg-kaya-dark text-kaya-light min-h-screen" style="background-color: white; color: black;">
     <Navbar />
     <main>
       <slot />
@@ -41,7 +41,7 @@ const { title } = Astro.props;
 <style is:global>
   @font-face {
     font-family:"Konstant Grotesk Neue" ;
-    src: url(/public/fonts/NeueKonstantGrotesk-Book.otf) format('truetype');
+    src: url(/fonts/NeueKonstantGrotesk-Book.otf) format('truetype');
     font-style: normal;
     font-display: swap;
     font-weight: normal;
