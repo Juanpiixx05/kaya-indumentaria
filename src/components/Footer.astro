@@ -3,46 +3,28 @@ import Layout from "../layouts/Layout.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-kaya-dark py-12 mt-20">
-  <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div data-aos="fade-up">
-        <h3 class="text-2xl font-bold mb-4">Kaya.ind</h3>
-        <p class="font-mono">Indumentaria</p>
-      </div>
-
       <div data-aos="fade-up" data-aos-delay="100">
         <div class="text-xl font-bold mb-4">Contáctanos</div>
         <form action="https://formsubmit.co/327021ed980c060bab386d35e46a3092 " method="POST">
           <label for="email">Email</label><br>
           <input class="form-input px-4 py-2" type="email" id="email" name="email" required><br><br>
-          
+
           <label for="subject">Asunto</label><br>
           <input class="form-input px-4 py-2" type="text" id="subject" name="subject" required><br><br>
-          
+
           <label for="message">Mensaje</label><br>
-          
+
           <textarea class="form-input px-4 py-2" id="message" name="message" required></textarea><br><br>
-          
+
           <button type="submit" class="form-input p-2">Enviar Mensaje</button>
-          
+
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="http://localhost:4321/">  
         </form>
       </div>
-      <style>
-        h4{
-          background-color: var(--bg-color);
-          color: var(--text-color)
-        }
-        button{
-          background-color: var(--bg-color);
-          color: var(--text-color)
-        }
-      </style>
       <div data-aos="fade-up" data-aos-delay="200">
         <div class="text-xl font-bold mb-4">Síguenos</div>
-        <div class="flex space-x-4">
+        <div class="container mx-auto px-4 flex space-x-4">
           <a href="https://www.instagram.com/indumentaria.kaya" target="_blank" rel="noopener noreferrer" 
              class="brutalist-border p-2">
             Instagram
@@ -58,8 +40,24 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
     </div>
+    <footer class="bg-kaya-dark py-12 mt-20">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div data-aos="fade-up">
+            <h3 class="text-2xl font-bold mb-4">Kaya.ind</h3>
+            <p class="font-mono">Indumentaria</p>
     <div class="mt-12 pt-8 border-t border-kaya-light/20 text-center font-mono">
       <p>&copy; {currentYear} Kaya Indumentaria. Todos los derechos reservados.</p>
     </div>
   </div>
 </footer>
+<style>
+  h4{
+    background-color: var(--bg-color);
+    color: var(--text-color)
+  }
+  button{
+    background-color: var(--bg-color);
+    color: var(--text-color)
+  }
+</style>
