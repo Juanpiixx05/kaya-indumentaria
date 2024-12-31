@@ -1,48 +1,12 @@
 ---
 import ProductCard from '../ProductCard.astro';
+import { products } from '../../data/products';
 
-const products = [
-  {
-    id: 1,
-    name: 'Chaqueta Oversized',
-    price: 89.99,
-    image: '/products/jacket.jpg',
-  },
-  {
-    id: 2,
-    name: 'Pantalón Cargo',
-    price: 69.99,
-    image: '/products/pants.jpg',
-  },
-  {
-    id: 3,
-    name: 'Camiseta Gráfica',
-    price: 39.99,
-    image: '/products/tshirt.jpg',
-  },
-  {
-    id: 4,
-    name: 'Hoodie Industrial',
-    price: 79.99,
-    image: '/products/hoodie.jpg',
-  },
-  {
-    id: 5,
-    name: 'Chaleco Técnico',
-    price: 59.99,
-    image: '/products/vest.jpg',
-  },
-  {
-    id: 6,
-    name: 'Pantalón Táctico',
-    price: 74.99,
-    image: '/products/tactical.jpg',
-  },
-];
+const productList = Object.values(products);
 ---
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  {products.map(product => (
+  {productList.map(product => (
     <div data-aos="fade-up">
       <ProductCard {...product} />
     </div>
