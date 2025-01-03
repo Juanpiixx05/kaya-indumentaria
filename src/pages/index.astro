@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import { products } from '../data/products';
+import ThreeBackground from '../components/ThreeBackground.astro';
 
 const featuredProducts = [
   {
@@ -31,7 +33,18 @@ const featuredProducts = [
     <div class="flex-start pl-10 py:10 pt-10 mt-10">
       <ThemeToggle />
     <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
-    <img src="src/images/Kaya-Indumentaria-inicio.svg" width="1920" height="1281" class="block mx-auto mt-8" >
+      <div class="relative">
+        <!-- Fondo con desenfoque -->
+        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center filter blur-md z-[-1]" 
+             style="background-image: url('src/images/Kaya-Indumentaria-inicio.svg');">
+        </div>
+        
+        <!-- Contenido principal -->
+        <img src="src/images/Kaya-Indumentaria-inicio.svg" 
+             width="1920" height="1281" 
+             class="block mx-auto mt-8 relative z-[1]" 
+             alt="Kaya Indumentaria">
+      </div>
     <div class="absolute bg-gradient-to-b from-kaya-dark/50 to-kaya-dark content-normal">
   </div>
   </section>
@@ -48,6 +61,7 @@ const featuredProducts = [
     </div>
   </section>
   <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
+    <ThreeBackground />
     <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block mt-2">
       EXPLORAR COLECCIÓN
     </a>
