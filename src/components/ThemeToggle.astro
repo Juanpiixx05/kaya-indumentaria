@@ -1,15 +1,18 @@
----
-const toggleTheme = () => {
-  const body = document.body;
-  if (body.style.backgroundColor === 'white') {
-    body.style.backgroundColor = 'black';
-    body.style.color = 'white';
-  } else {
-    body.style.backgroundColor = 'white';
-    body.style.color = 'black';
-  }
-};
----
+<script>
+  const toggleTheme = () => {
+    const body = document.body;
+    const isLightMode = body.style.backgroundColor === 'white';
+
+    // Cambiar los estilos según el modo actual
+    body.style.backgroundColor = isLightMode ? 'black' : 'white';
+    body.style.color = isLightMode ? 'white' : 'black';
+  };
+
+  // Agregar el evento de clic al botón cuando el componente se cargue
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('theme-toggle-button').addEventListener('click', toggleTheme);
+  });
+</script>
 
 <button
   id="theme-toggle-button"
@@ -18,16 +21,3 @@ const toggleTheme = () => {
   Cambiar Tema
 </button>
 
-<script>
-  // Agregar el evento de clic al botón cuando el componente se cargue en el navegador
-  document.getElementById('theme-toggle-button').addEventListener('click', () => {
-    const body = document.body;
-    if (body.style.backgroundColor === 'white') {
-      body.style.backgroundColor = 'black';
-      body.style.color = 'white';
-    } else {
-      body.style.backgroundColor = 'white';
-      body.style.color = 'black';
-    }
-  });
-</script>

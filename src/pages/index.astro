@@ -35,7 +35,7 @@ const featuredProducts = [
     <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
       <div class="relative">
         <!-- Fondo con desenfoque -->
-        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center filter blur-md z-[-1]" 
+        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center filter blur-3xl z-[-1]" 
              style="background-image: url('src/images/Kaya-Indumentaria-inicio.svg');">
         </div>
         
@@ -61,8 +61,10 @@ const featuredProducts = [
     </div>
   </section>
   <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
-    <ThreeBackground />
-    <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block mt-2">
+    <div>
+      <ThreeBackground />
+    </div>
+    <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block mt-8">
       EXPLORAR COLECCIÓN
     </a>
   </div>
@@ -76,7 +78,6 @@ const featuredProducts = [
           background-color: var(--bg-color);
           color: var(--text-color)
         }
-
 
   </style>
 

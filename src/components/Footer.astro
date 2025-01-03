@@ -3,8 +3,8 @@ import Layout from "../layouts/Layout.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-      <div data-aos="fade-up" data-aos-delay="100">
-        <div class="text-xl font-bold mb-4">Contáctanos</div>
+      <div data-aos="fade-up" data-aos-delay="100" class="text-center backdrop-blur-sm">
+        <div class="text-xl font-bold mb-4 mt-8">Contáctanos</div>
         <form action="https://formsubmit.co/327021ed980c060bab386d35e46a3092 " method="POST">
           <label for="email">Email</label><br>
           <input class="form-input px-4 py-2" type="email" id="email" name="email" required><br><br>
@@ -21,36 +21,42 @@ const currentYear = new Date().getFullYear();
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="http://localhost:4321/">  
         </form>
-      </div>
-      <div data-aos="fade-up" data-aos-delay="200">
-        <div class="text-xl font-bold mb-4">Síguenos</div>
-        <div class="container mx-auto px-4 flex space-x-4">
-          <a href="https://www.instagram.com/indumentaria.kaya" target="_blank" rel="noopener noreferrer" 
-             class="brutalist-border p-2">
-            Instagram
-          </a>
-          <a href="https://wa.me/5491138229376" target="_blank" rel="noopener noreferrer" 
-             class="brutalist-border p-2">
-            WhatsApp
-          </a>
-          <a href="https://www.facebook.com/profile.php?id=61559965091694" target="_blank" rel="noopener noreferrer" 
-            class="brutalist-border p-2">
-              Facebook
-          </a>
-        </div>
-      </div>
+
+      <div 
+      data-aos="fade-up" 
+      data-aos-delay="200" 
+      class="text-center flex flex-col items-center justify-center backdrop-blur-sm"
+    >
+      <div class="text-xl font-bold mb-4 mt-8">Síguenos</div>
+      <di class="mx-auto px-4 flex space-x-4">
+        <a href="https://www.instagram.com/indumentaria.kaya" target="_blank" rel="noopener noreferrer" 
+           class="brutalist-border p-2">
+          Instagram
+        </a>
+        <a href="https://wa.me/5491138229376" target="_blank" rel="noopener noreferrer" 
+           class="brutalist-border p-2">
+          WhatsApp
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61559965091694" target="_blank" rel="noopener noreferrer" 
+           class="brutalist-border p-2">
+          Facebook
+        </a>
     </div>
-    <footer class="bg-kaya-dark py-12 mt-20">
+    <footer class="bg-kaya-dark py-12 mt-10">
       <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
           <div data-aos="fade-up">
             <h3 class="text-2xl font-bold mb-4">Kaya.ind</h3>
             <p class="font-mono">Indumentaria</p>
-    <div class="mt-12 pt-8 border-t border-kaya-light/20 text-center font-mono">
-      <p>&copy; {currentYear} Kaya Indumentaria. Todos los derechos reservados.</p>
+            <div class="mt-12 pt-8 border-t border-kaya-light/20 text-center font-mono">
+              <p>&copy; {currentYear} Kaya Indumentaria. Todos los derechos reservados.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+      </div>
     </div>
-  </div>
-</footer>
 <style>
   h4{
     background-color: var(--bg-color);
