@@ -1,15 +1,18 @@
 ---
+// filepath: /d:/DOCUMENTOS/Programando/kaya-indumentaria/src/pages/galeria/producto/[id].astro
 import Layout from '../../../layouts/Layout.astro';
 import ProductDetail from '../../../components/ProductDetail.astro';
 import { products } from '../../../data/products';
 
+// Generación de rutas estáticas para cada producto
 export function getStaticPaths() {
-  return Object.keys(products).map(id => ({
-    params: { id },
-    props: { product: products[id] }
+  return products.map(product => ({
+    params: { id: product.id.toString() },
+    props: { product }
   }));
 }
 
+// Extracción de las propiedades del producto
 const { product } = Astro.props;
 ---
 

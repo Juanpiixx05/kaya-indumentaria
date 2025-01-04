@@ -16,7 +16,7 @@ const featuredProducts = [
     id: 2,
     name: 'Pantalón Cargo',
     price: 69.99,
-    image: '../products/remera-gatitoantipoli.jpg',
+    image: './products/remera-gatitoantipoli.jpg',
   },
   {
     id: 3,
@@ -28,26 +28,33 @@ const featuredProducts = [
 ---
 
 <Layout title="Inicio">
+  <!-- Sección principal con fondo y botón de cambio de tema -->
   <section class="flex flex-col items-center justify-center relative overflow-hidden">
     <div class="from-kaya-dark/50 to-kaya-dark">
-    <div class="flex-start pl-10 py:10 pt-10 mt-10">
-      <ThemeToggle />
-    <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
-      <div class="relative">
-        <!-- Fondo con desenfoque -->
-        <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center filter blur-3xl z-[-1]" 
-             style="background-image: url('src/images/Kaya-Indumentaria-inicio.svg');">
+      <div class="flex-start pl-10 py:10 pt-10 mt-10">
+        <div class="">
+          <ThemeToggle id="theme-toggle" class="flex-start pl-10 py:10 pt-10 mt-10">
+            Cambiar Tema
+          </ThemeToggle>
         </div>
-        
-        <!-- Contenido principal -->
-        <img src="src/images/Kaya-Indumentaria-inicio.svg" 
-             width="1920" height="1281" 
-             class="block mx-auto mt-8 relative z-[1]" 
-             alt="Kaya Indumentaria">
+        <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
+          <div class="relative">
+            <!-- Fondo con desenfoque -->
+            <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center filter blur-md z-[-1]" 
+                 style="background-image: url('src/images/Kaya-Indumentaria-inicio.svg');">
+            </div>
+            <!-- Contenido principal -->
+            <img src="src/images/Kaya-Indumentaria-inicio.svg" 
+                 width="1920" height="1281" 
+                 class="block mx-auto mt-8 relative z-[1]" 
+                 alt="Kaya Indumentaria">
+          </div>
+        </div>
       </div>
-    <div class="absolute bg-gradient-to-b from-kaya-dark/50 to-kaya-dark content-normal">
-  </div>
+    </div>
   </section>
+
+  <!-- Sección de productos destacados -->
   <section class="featured-products">
     <div class="container mx-auto px-4 mt-8">
       <h2 class="text-4xl font-bold mb-12" data-aos="fade-right">DESTACADOS</h2>
@@ -60,6 +67,8 @@ const featuredProducts = [
       </div>
     </div>
   </section>
+
+  <!-- Sección con fondo animado y enlace a la galería -->
   <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
     <div>
       <ThreeBackground />
@@ -69,15 +78,17 @@ const featuredProducts = [
     </a>
   </div>
 </Layout>
+
 <style>
+  /* Estilo para la sección principal */
   .hero {
     background-size: cover;
-    background-position: flex;
+    background-position: center;
   }
-  img{
-          background-color: var(--bg-color);
-          color: var(--text-color)
-        }
 
-  </style>
-
+  /* Estilo para las imágenes */
+  img {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+</style>

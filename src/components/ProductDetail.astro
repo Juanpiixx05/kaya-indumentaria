@@ -1,12 +1,19 @@
 ---
 import ThemeToggle from '../components/ThemeToggle.astro';
 interface Props {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  description: string;
-  sizes: string[];
+
+id: number;
+
+name: string;
+
+price: number;
+
+image: string;
+
+description: string;
+
+sizes: readonly string[];
+
 }
 
 const { id, name, price, image, description, sizes } = Astro.props;
