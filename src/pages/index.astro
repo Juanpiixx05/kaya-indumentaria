@@ -1,66 +1,38 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
-import ThemeToggle from '../components/ThemeToggle.astro';
 import { products } from '../data/products';
-import ThreeBackground from '../components/ThreeBackground.astro';
+import Y2KBackground from '../components/Y2KBackground.astro';
 
-const featuredProducts = [
-  {
-    id: 1,
-    name: 'Chaqueta Oversized',
-    price: 89.99,
-    image: '../products/Monitos-Back.jpg'
-  },
-  {
-    id: 2,
-    name: 'Pantalón Cargo',
-    price: 69.99,
-    image: './products/remera-gatitoantipoli.jpg',
-  },
-  {
-    id: 3,
-    name: 'Camiseta Gráfica',
-    price: 39.99,
-    image: '../products/SUMO-BACK.jpg',
-  },
-];
+const featuredProducts = products;
 ---
 
 <Layout title="Inicio">
-  <!-- Sección principal con fondo y botón de cambio de tema -->
-  <section class="flex flex-col items-center justify-center relative overflow-hidden">
-    <div class="from-kaya-dark/50 to-kaya-dark">
-      <div class="flex-start pl-10 py:10 pt-10 mt-10">
-        <div class="">
-          <ThemeToggle id="theme-toggle" class="flex-start pl-10 py:10 pt-10 mt-10">
-            Cambiar Tema
-          </ThemeToggle>
-        </div>
-        <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
-          <div class="relative">
-            <!-- Fondo con desenfoque -->
-            <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center filter blur-md z-[-1]" 
-                 style="background-image: url('src/images/Kaya-Indumentaria-inicio.svg');">
-            </div>
-            <!-- Contenido principal -->
-            <img src="src/images/Kaya-Indumentaria-inicio.svg" 
-                 width="1920" height="1281" 
-                 class="block mx-auto mt-8 relative z-[1]" 
-                 alt="Kaya Indumentaria">
-          </div>
-        </div>
+  <Y2KBackground />
+
+  <!-- Sección principal con imagen -->
+  <section class="hero relative min-h-screen">
+    <div class="container mx-auto px-4 pt-20">
+      <div class="relative max-w-6xl mx-auto" data-aos="fade-up">
+        <img 
+          src="/images/Kaya-Indumentaria-inicio.svg"
+          alt="Kaya Indumentaria"
+          class="relative z-10 w-full h-auto mx-auto"
+          style="max-width: min(90vw, 800px);"
+        />
       </div>
     </div>
   </section>
 
   <!-- Sección de productos destacados -->
-  <section class="featured-products">
-    <div class="container mx-auto px-4 mt-8">
-      <h2 class="text-4xl font-bold mb-12" data-aos="fade-right">DESTACADOS</h2>
+  <section class="featured-products py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold mb-12 brutalist-border inline-block px-4 py-2" data-aos="fade-right">
+        DESTACADOS
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {featuredProducts.map(product => (
-          <div data-aos="fade-up">
+        {featuredProducts.map((product, index) => (
+          <div data-aos="fade-up" data-aos-delay={index * 100}>
             <ProductCard {...product} />
           </div>
         ))}
@@ -68,11 +40,8 @@ const featuredProducts = [
     </div>
   </section>
 
-  <!-- Sección con fondo animado y enlace a la galería -->
-  <div class="container mx-auto px-4 z-10 text-center" data-aos="fade-up">
-    <div>
-      <ThreeBackground />
-    </div>
+  <!-- Sección con enlace a la galería -->
+  <div class="container mx-auto px-4 text-center pb-20" data-aos="fade-up">
     <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block mt-8">
       EXPLORAR COLECCIÓN
     </a>
@@ -80,15 +49,13 @@ const featuredProducts = [
 </Layout>
 
 <style>
-  /* Estilo para la sección principal */
   .hero {
-    background-size: cover;
-    background-position: center;
+    position: relative;
+    z-index: 1;
   }
 
-  /* Estilo para las imágenes */
-  img {
-    background-color: var(--bg-color);
-    color: var(--text-color);
+  .featured-products {
+    position: relative;
+    z-index: 1;
   }
 </style>

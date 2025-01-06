@@ -1,23 +1,110 @@
-<script>
-  const toggleTheme = () => {
-    const body = document.body;
-    const isLightMode = body.style.backgroundColor === 'white';
+---
+// ThemeToggle.astro
+---
 
-    // Cambiar los estilos según el modo actual
-    body.style.backgroundColor = isLightMode ? 'black' : 'white';
-    body.style.color = isLightMode ? 'white' : 'black';
+<script>
+  const theme = (() => {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+      return localStorage.getItem('theme');
+    }
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
+  })();
+
+  document.documentElement.setAttribute('data-theme', theme);
+
+  const handleToggleClick = () => {
+    const root = document.documentElement;
+    const currentTheme = root.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    root.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
-  // Agregar el evento de clic al botón cuando el componente se cargue
   document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('theme-toggle-button').addEventListener('click', toggleTheme);
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton?.addEventListener('click', handleToggleClick);
   });
 </script>
 
 <button
-  id="theme-toggle-button"
-  class="px-4 py-2 rounded bg-black text-white hover:bg-white hover:text-black text-sm uppercase"
+  type="button"
+  id="theme-toggle"
+  class="theme-toggle"
+  aria-label="Cambiar tema"
+  title="Cambiar entre modo claro y oscuro"
 >
-  Cambiar Tema
+  <svg xmlns="http://www.w3.org/2000/svg" class="theme-icon sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="5"/>
+    <path d="M12 1v2"/>
+    <path d="M12 21v2"/>
+    <path d="M4.22 4.22l1.42 1.42"/>
+    <path d="M18.36 18.36l1.42 1.42"/>
+    <path d="M1 12h2"/>
+    <path d="M21 12h2"/>
+    <path d="M4.22 19.78l1.42-1.42"/>
+    <path d="M18.36 5.64l1.42-1.42"/>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" class="theme-icon moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    <circle cx="12" cy="8" r="1" fill="currentColor"/>
+    <circle cx="15" cy="13" r="1" fill="currentColor"/>
+    <circle cx="9" cy="14" r="1" fill="currentColor"/>
+  </svg>
 </button>
 
+<style>
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background-color: rgba(165, 3, 3, 0.1);
+  }
+
+  .theme-icon {
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    stroke: currentColor;
+  }
+
+  .theme-icon.sun {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  .theme-icon.moon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  :root[data-theme="dark"] .theme-icon.sun {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  :root[data-theme="dark"] .theme-icon.moon {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  @media (hover: hover) {
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
+  }
+</style>

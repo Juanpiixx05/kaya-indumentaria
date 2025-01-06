@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 import 'aos/dist/aos.css';
 import ThemeToggle from '../components/ThemeToggle.astro';
-import tailwindConfig from '../../tailwind.config.mjs';
 
 interface Props {
   title: string;
@@ -13,15 +12,15 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Kaya Indumentaria - Vanguardia en estilo" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="../images/kaya-ind-favicon.jpg" />
-    <title>Kaya Indumentaria | {title} </title>
+    <link rel="icon" type="image/svg+xml" href="/images/kaya-ind-favicon.jpg" />
+    <title>Kaya Indumentaria | {title}</title>
   </head>
-  <body class="bg-kaya-dark text-kaya-light min-h-screen" style="background-color: white; color: black;">
+  <body>
     <Navbar />
     <main>
       <slot />
@@ -32,40 +31,57 @@ const { title } = Astro.props;
 
 <script>
   import AOS from 'aos';
+  
+  // Inicializar AOS
   AOS.init({
     duration: 800,
     once: true,
+    offset: 50
   });
+
+  // Inicializar tema
+  const theme = localStorage.getItem('theme') || 
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', theme);
 </script>
 
 <style is:global>
   @font-face {
-    font-family:"Konstant Grotesk Neue" ;
-    src: url(/fonts/NeueKonstantGrotesk-Book.otf) format('truetype');
+    font-family: "Konstant Grotesk Neue";
+    src: url("/fonts/NeueKonstantGrotesk-Book.otf") format("opentype");
     font-style: normal;
     font-display: swap;
     font-weight: normal;
   }
-  body {
-    font-family: "Konstant Grotesk Neue", serif;
-    overflow-x: hidden;
+
+  :root {
+    --bg-color: #f4f4f4;
+    --text-color: #000000;
+  }
+
+  :root[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+  }
+
+  html {
     background-color: var(--bg-color);
     color: var(--text-color);
-    transition: all 0.3s;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-
   }
-  * {
-    margin: 1;
-    padding: 1;
+
+  body {
+    font-family: "Konstant Grotesk Neue", system-ui, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transition: background-color 0.3s, color 0.3s;
   }
 
   .brutalist-border {
     background-color: var(--bg-color);
     color: var(--text-color);
-    border: 2px solid #201f1f;
+    border: 2px solid currentColor;
     transition: all 0.3s ease;
   }
 
@@ -73,18 +89,4 @@ const { title } = Astro.props;
     transform: translate(-4px, -4px);
     box-shadow: 4px 4px 0 rgb(165, 3, 3);
   }
-
-  .form-input {
-    border: 2px solid #131313;
-    transition: all 0.3s ease;
-    background-color: rgb(240, 240, 240);
-  }  .form-input:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: 4px 4px 0 #ad1313;
-  }
-  :root {
-  --bg-color: #f4f4f4;
-  --text-color: #000000;
-
-}
-
+</style>
