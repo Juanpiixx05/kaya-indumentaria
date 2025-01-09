@@ -2,60 +2,316 @@
 import Layout from '../layouts/Layout.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products } from '../data/products';
-import Y2KBackground from '../components/Y2KBackground.astro';
 
 const featuredProducts = products;
 ---
 
 <Layout title="Inicio">
-  <Y2KBackground />
+  <style>
+    :root {
+      --shadow-elevation-low: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+      --shadow-elevation-medium: 0 3px 6px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+      --shadow-elevation-high: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    }
 
-  <!-- Sección principal con imagen -->
-  <section class="hero relative">
-    <div class="container mx-auto px-4 pt-20">
-      <div class="relative max-w-6xl mx-auto" data-aos="fade-up">
-        <img 
-          src="/images/Kaya-Indumentaria-inicio.svg"
-          alt="Kaya Indumentaria"
-          class="relative z-10 w-full h-auto mx-auto"
-          style="max-width: min(90vw, 800px);"
-        />
+    body {
+      background: url("/kaya-ind-bckg2.mp4") no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+    }
+
+    .glass-section {
+      background: rgba(var(--bg-color-rgb), 0.4);
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      border: 1px solid rgba(var(--text-color-rgb), 0.1);
+      box-shadow: var(--shadow-elevation-medium);
+      margin-bottom: 2rem;
+      padding: 2rem;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: auto;
+    }
+
+    .glass-section:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-elevation-high);
+    }
+
+    .section-spacing {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-spacing {
+        padding: 1rem;
+      }
+    }
+
+    .y2k-hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      color: var(--text-color);
+      overflow: hidden;
+      padding: 2rem;
+    }
+
+    @media (max-width: 1024px) {
+      .y2k-hero {
+        height: auto;
+        min-height: 100vh;
+        padding: 1rem;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.5;
+      filter: blur(2px) brightness(0.9);
+    }
+
+    @media (max-width: 1024px) {
+      .video-background {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        height: 90%;
+        border-radius: 16px;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.5;
+        filter: blur(2px) brightness(0.9);
+        box-shadow: var(--shadow-elevation-medium);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 500px;
+      text-align: right;
+      margin-bottom: 2rem;
+      margin-right: 2rem;
+      background: rgba(var(--bg-color-rgb), 0.6);
+      backdrop-filter: blur(15px);
+      border-radius: 16px;
+      border: 1px solid rgba(var(--text-color-rgb), 0.1);
+      box-shadow: var(--shadow-elevation-medium);
+      padding: 2.5rem;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-content {
+        max-width: calc(100% - 2rem);
+        width: 90%;
+        margin: 2rem auto;
+        text-align: center;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      color: var(--text-color);
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-title {
+        font-size: 2rem;
+        text-align: center;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-color);
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-subtitle {
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 1rem;
+      }
+    }
+
+    .hero-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: transparent;
+      color: var(--text-color);
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+      border: 2px solid var(--text-color);
+      position: relative;
+      transition: all 0.3s ease;
+      z-index: 1;
+      backdrop-filter: blur(5px);
+      background: rgba(var(--text-color-rgb), 0.1);
+      overflow: hidden;
+    }
+
+    .hero-button::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: rgba(var(--text-color-rgb), 0.05);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      backdrop-filter: blur(3px);
+    }
+
+    .hero-button:hover::before {
+      opacity: 1;
+    }
+
+    .hero-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-button {
+        width: 100%;
+        text-align: center;
+        max-width: 250px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .product-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .product-card-wrapper {
+      perspective: 1000px;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card-wrapper:hover {
+      transform: rotateX(5deg) translateY(-10px);
+    }
+
+    @media (max-width: 768px) {
+      .product-card-wrapper:hover {
+        transform: none;
+      }
+    }
+    .brutalist-border {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        border: 2px solid currentColor;
+        transition: all 0.3s ease;
+      }
+
+      .brutalist-border:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 4px 4px 0 rgb(165, 3, 3);
+      }
+  </style>
+
+  <section class="y2k-hero">
+    <video 
+      class="video-background" 
+      autoplay 
+      loop 
+      muted 
+      playsinline
+    >
+      <source src="/kaya-ind-bckg2.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content">
+      <h1 class="hero-title">Kaya Indumentaria</h1>
+      <p class="hero-subtitle">Vanguardia en estilo</p>
+      <div class="hero-buttons">
+        <a href="/contacto" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8">Contacto</a>
+        <a href="/galeria" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8">Galería</a>
       </div>
     </div>
   </section>
 
   <!-- Sección de productos destacados -->
-  <section class="featured-products py-8 sm:py-10">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold mb-12 brutalist-border inline-block px-4 py-2" data-aos="fade-right">
-        DESTACADOS
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {featuredProducts.map((product, index) => (
-          <div data-aos="fade-up" data-aos-delay={index * 100}>
-            <ProductCard {...product} />
-          </div>
-        ))}
+  <section class="featured-products relative z-10">
+    <div class="section-spacing">
+      <div class="glass-section">
+        <h2 class="text-4xl font-bold mb-12 brutalist-border inline-block px-4 py-2" data-aos="fade-right">
+          DESTACADOS
+        </h2>
+        <div class="product-grid">
+          {featuredProducts.map((product, index) => (
+            <div class="product-card-wrapper" data-aos="fade-up" data-aos-delay={index * 100}>
+              <ProductCard {...product} />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Sección con enlace a la galería -->
-  <div class="container mx-auto px-4 text-center pb-20" data-aos="fade-up">
-    <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block mt-8">
-      EXPLORAR COLECCIÓN
-    </a>
+  <div class="container mx-auto px-4 text-center pb-20 relative z-10" data-aos="fade-up">
+    <div class="glass-section">
+      <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block">
+        EXPLORAR COLECCIÓN
+      </a>
+    </div>
   </div>
 </Layout>
-
-<style>
-  .hero {
-    position: relative;
-    z-index: 1;
-  }
-
-  .featured-products {
-    position: relative;
-    z-index: 1;
-  }
-</style>
