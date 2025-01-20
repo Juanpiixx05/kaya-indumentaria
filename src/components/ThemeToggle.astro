@@ -7,21 +7,24 @@
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
       return localStorage.getItem('theme');
     }
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+    return 'light';
   })();
 
-  const setTheme = (selectedTheme) => {
-    document.documentElement.setAttribute('data-theme', selectedTheme);
-    localStorage.setItem('theme', selectedTheme);
-  };
-
-  setTheme(theme);
+  document.documentElement.setAttribute('data-theme', theme);
 
   const handleToggleClick = () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const root = document.documentElement;
+    const currentTheme = root.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
+    
+    root.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Añadir/remover clase para cambiar fondo
+    document.body.classList.toggle('light-theme', newTheme === 'light');
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -52,6 +55,6 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    color: var(--text-color-light);
+    border-radius: 50%;
   }
 </style>
