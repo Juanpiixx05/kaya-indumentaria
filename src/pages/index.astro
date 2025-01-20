@@ -268,9 +268,9 @@ const featuredProducts = products;
       }
   </style>
 
-  <section class="y2k-hero">
+  <section class="y2k-hero relative">
     <video 
-      class="video-background" 
+      class="absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-70" 
       autoplay 
       loop 
       muted 
@@ -278,6 +278,14 @@ const featuredProducts = products;
     >
       <source src="/kaya-ind-bckg2.mp4" type="video/mp4" />
     </video>
+    <div class="hero-content relative z-10 text-white">
+      <h1 class="hero-title text-5xl font-bold mb-4">Kaya Indumentaria</h1>
+      <p class="hero-subtitle text-2xl mb-8">Vanguardia en estilo</p>
+      <div class="hero-buttons">
+        <a href="/contacto" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8 mr-4">Contacto</a>
+        <a href="/galeria" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8">Galería</a>
+      </div>
+    </div>
   </section>
 
   <!-- Sección de productos destacados -->
