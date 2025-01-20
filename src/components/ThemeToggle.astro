@@ -11,15 +11,17 @@
     return prefersDark ? 'dark' : 'light';
   })();
 
-  document.documentElement.setAttribute('data-theme', theme);
+  const setTheme = (selectedTheme) => {
+    document.documentElement.setAttribute('data-theme', selectedTheme);
+    localStorage.setItem('theme', selectedTheme);
+  };
+
+  setTheme(theme);
 
   const handleToggleClick = () => {
-    const root = document.documentElement;
-    const currentTheme = root.getAttribute('data-theme');
+    const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    root.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -50,6 +52,6 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    color: var(--text-color);
+    color: var(--text-color-light);
   }
 </style>
