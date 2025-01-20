@@ -22,9 +22,6 @@
     
     root.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    
-    // Añadir/remover clase para cambiar fondo
-    document.body.classList.toggle('light-theme', newTheme === 'light');
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -36,11 +33,26 @@
 <button
   type="button"
   id="theme-toggle"
-  class="theme-toggle opacity-50 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+  class="theme-toggle"
   aria-label="Cambiar tema"
+  title="Cambiar entre modo claro y oscuro"
 >
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="current-color">
-    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+  <svg xmlns="http://www.w3.org/2000/svg" class="theme-icon sun" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="5"/>
+    <path d="M12 1v2"/>
+    <path d="M12 21v2"/>
+    <path d="M4.22 4.22l1.42 1.42"/>
+    <path d="M18.36 18.36l1.42 1.42"/>
+    <path d="M1 12h2"/>
+    <path d="M21 12h2"/>
+    <path d="M4.22 19.78l1.42-1.42"/>
+    <path d="M18.36 5.64l1.42-1.42"/>
+  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" class="theme-icon moon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    <circle cx="12" cy="8" r="1" fill="currentColor"/>
+    <circle cx="15" cy="13" r="1" fill="currentColor"/>
+    <circle cx="9" cy="14" r="1" fill="currentColor"/>
   </svg>
 </button>
 
@@ -52,9 +64,47 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: transparent;
     border: none;
+    background: transparent;
     cursor: pointer;
     border-radius: 50%;
+    transition: background-color 0.3s ease;
+  }
+
+  .theme-toggle:hover {
+    background-color: rgba(165, 3, 3, 0.1);
+  }
+
+  .theme-icon {
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    stroke: currentColor;
+  }
+
+  .theme-icon.sun {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  .theme-icon.moon {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  :root[data-theme="dark"] .theme-icon.sun {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  :root[data-theme="dark"] .theme-icon.moon {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  @media (hover: hover) {
+    .theme-toggle:hover {
+      transform: scale(1.1);
+    }
   }
 </style>
