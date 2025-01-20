@@ -7,10 +7,8 @@
     if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
       return localStorage.getItem('theme');
     }
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return prefersDark ? 'dark' : 'light';
   })();
 
   document.documentElement.setAttribute('data-theme', theme);
@@ -49,9 +47,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
     background: transparent;
+    border: none;
     cursor: pointer;
-    border-radius: 50%;
+    color: var(--text-color);
   }
 </style>
