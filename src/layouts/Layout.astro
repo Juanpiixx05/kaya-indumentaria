@@ -43,25 +43,41 @@ const { title } = Astro.props;
         );
       }
 
+      .video-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+        opacity: 0.5;
+      }
+
       body {
         min-height: 100vh;
-        background: 
-          var(--gradient-dark),
-          url("/kaya-ind-bckg2.mp4") no-repeat center center fixed;
+        background: var(--gradient-dark);
         background-size: cover;
         background-blend-mode: overlay;
         color: var(--text-color);
-        overflow-x: hidden;
+        position: relative;
       }
 
       body.light-theme {
-        background: 
-          var(--gradient-light),
-          url("/kaya-ind-bckg2.mp4") no-repeat center center fixed;
+        background: var(--gradient-light);
         background-size: cover;
         background-blend-mode: soft-light;
       }
     </style>
+    <video 
+      class="video-background" 
+      autoplay 
+      loop 
+      muted 
+      playsinline
+    >
+      <source src="/kaya-ind-bckg2.mp4" type="video/mp4" />
+    </video>
     <script>
       import AOS from 'aos';
       
