@@ -51,8 +51,7 @@ const { title } = Astro.props;
         height: 100%;
         object-fit: cover;
         z-index: -1;
-        opacity: 0.7;
-        display: none;
+        opacity: 0.5;
       }
 
       body {
@@ -60,18 +59,25 @@ const { title } = Astro.props;
         background: var(--gradient-dark);
         background-size: cover;
         background-blend-mode: overlay;
-        color: var(--text-color-light);
+        color: var(--text-color);
         position: relative;
-        transition: background 0.3s ease, color 0.3s ease;
       }
 
       body.light-theme {
         background: var(--gradient-light);
-        color: var(--text-color-light);
         background-size: cover;
         background-blend-mode: soft-light;
       }
     </style>
+    <video 
+      class="video-background" 
+      autoplay 
+      loop 
+      muted 
+      playsinline
+    >
+      <source src="/kaya-ind-bckg2.mp4" type="video/mp4" />
+    </video>
     <script>
       import AOS from 'aos';
       
@@ -83,42 +89,21 @@ const { title } = Astro.props;
       });
 
       // Inicializar tema
-      const savedTheme = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      const theme = savedTheme || (prefersDark ? 'dark' : 'light');
-      
+      const theme = localStorage.getItem('theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-
-      // Función para cambiar el tema
-      const toggleTheme = () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        
-        // Añadir/remover clase para cambiar fondo
-        document.body.classList.toggle('light-theme', newTheme === 'light');
-      };
-
-      // Añadir evento de toggle
-      document.addEventListener('DOMContentLoaded', () => {
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-          themeToggle.addEventListener('click', toggleTheme);
-        }
-      });
     </script>
 
     <style is:global>
+      @font-face {
+        font-family: "Konstant Grotesk Neue";
+        src: url("/fonts/NeueKonstantGrotesk-Book.otf") format("opentype");
+        font-style: normal;
+        font-display: swap;
+        font-weight: normal;
+      }
+
       :root {
-        --bg-color-light: #fff9f9;
-        --text-color-light: #000000;
-        --bg-color-dark: #121212;
-        --text-color-dark: #ffffff;
-        
         -webkit-backdrop-filter: blur(10000px);
         --bg-color: #fff9f9;
         --text-color: #000000;
@@ -142,7 +127,7 @@ const { title } = Astro.props;
         font-family: "Konstant Grotesk Neue", system-ui, sans-serif;
         margin: 0;
         padding: 0;
-        line-height: 1.6;
+        transition: background-color 0.3s, color 0.3s;
       }
 
       .brutalist-border {
@@ -150,6 +135,11 @@ const { title } = Astro.props;
         color: var(--text-color);
         border: 2px solid currentColor;
         transition: all 0.3s ease;
+      }
+
+      .brutalist-border:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 4px 4px 0 rgb(165, 3, 3);
       }
     </style>
   </body>
