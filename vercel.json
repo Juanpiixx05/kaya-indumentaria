@@ -1,4 +1,10 @@
 {
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build" }
+  ],
+  "github": {
+    "branch": "ramiro_branch"
+  },
   "headers": [
     {
       "source": "/(.*)",
