@@ -1,0 +1,35 @@
+---
+import { useState } from 'react';
+
+const SimpleButton = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <button
+      onClick={() => setCount(c => c + 1)}
+      className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Clicks: {count}
+    </button>
+  );
+};
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>React Test Page</title>
+  </head>
+  <body>
+    <div class="container mx-auto px-4 py-8">
+      <h1 class="text-2xl font-bold mb-4">Prueba de React</h1>
+      <SimpleButton client:load />
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+</style>

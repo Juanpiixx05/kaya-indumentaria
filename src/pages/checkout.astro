@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MercadoPagoButton from '../components/MercadoPagoButton';
+
+// Datos de ejemplo para el producto
+const productData = {
+  title: "Producto de prueba",
+  price: 1000,
+  quantity: 1
+};
+---
+
+<Layout title="Checkout">
+  <main class="container mx-auto px-4 py-8">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-3xl font-bold mb-6">Finalizar Compra</h1>
+      
+      <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+        <h2 class="text-xl font-semibold mb-4">Resumen de la compra</h2>
+        <div class="flex justify-between mb-2">
+          <span>Producto:</span>
+          <span>{productData.title}</span>
+        </div>
+        <div class="flex justify-between mb-2">
+          <span>Cantidad:</span>
+          <span>{productData.quantity}</span>
+        </div>
+        <div class="flex justify-between mb-4 font-bold">
+          <span>Total:</span>
+          <span>${productData.price}</span>
+        </div>
+        
+        <div class="mt-6">
+          <MercadoPagoButton 
+            client:load
+            title={productData.title}
+            price={productData.price}
+            quantity={productData.quantity}
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
