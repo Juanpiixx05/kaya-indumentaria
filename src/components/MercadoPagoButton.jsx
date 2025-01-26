@@ -6,35 +6,36 @@ const MercadoPagoButton = ({ title, price, quantity = 1 }) => {
   const handlePayment = async () => {
     try {
       setLoading(true);
-      console.log('Iniciando pago...', { title, price, quantity });
+      
+      // Validación de precio
+      if (isNaN(price) || price <= 0) {
+        throw new Error("El precio debe ser un número válido");
+      }
 
+      // Llamada a la API
       const response = await fetch('/api/mercadopago', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          title,
-          price,
-          quantity,
-        }),
+          title: title.substring(0, 255),
+          price: Number(price),
+          quantity: Number(quantity)
+        })
       });
 
-      const data = await response.json();
-      console.log('Respuesta del servidor:', data);
-
+      // Manejar errores HTTP
       if (!response.ok) {
-        throw new Error(data.error || 'Error al procesar el pago');
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error en el servidor");
       }
 
-      if (data.init_point) {
-        window.open(data.init_point, '_blank');
-      } else {
-        throw new Error('No se pudo obtener el link de pago');
-      }
+      // Redirección
+      const { init_point } = await response.json();
+      window.location.href = init_point;
+
     } catch (error) {
-      console.error('Error al procesar el pago:', error);
-      alert('Hubo un error al procesar el pago. Por favor, intenta nuevamente.');
+      console.error("Error en pago:", error);
+      alert(error.message);
     } finally {
       setLoading(false);
     }
@@ -44,11 +45,8 @@ const MercadoPagoButton = ({ title, price, quantity = 1 }) => {
     <button
       onClick={handlePayment}
       disabled={loading}
-      className={`
-        bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded
-        transition-colors duration-200
-        ${loading ? 'opacity-50 cursor-not-allowed' : ''}
-      `}
+      className={`bg-[#00B1EA] hover:bg-[#0098C7] text-white font-bold py-3 px-6 rounded-lg
+        transition-colors duration-300 ${loading ? 'opacity-50 cursor-wait' : ''}`}
     >
       {loading ? 'Procesando...' : 'Pagar con Mercado Pago'}
     </button>

@@ -1,24 +1,34 @@
 ---
+import MercadoPagoButton from 'src/components/MercadoPagoButton.jsx';
+
 const paymentMethods = [
   { id: 'card', name: 'Tarjeta de Crédito/Débito', icon: '💳' },
   { id: 'transfer', name: 'Transferencia Bancaria', icon: '🏦' },
   { id: 'mercadopago', name: 'MercadoPago', icon: '📱' },
 ];
-import ThemeToggle from '../ThemeToggle.astro';
 ---
 
-<div class="max-w-2xl mx-auto p-6 brutalist-border bg-kaya-dark/50" data-aos="fade-up">
+<div class="max-w-2xl mx-auto p-6 brutalist-border bg-kaya-dark/50">
   <h2 class="text-2xl font-bold mb-6">Método de Pago</h2>
   
   <div class="space-y-4">
-    {paymentMethods.map(method => (
-      <button
-        class="w-full brutalist-border p-4 flex items-center space-x-4 hover:text-kaya-accent"
-        onclick={`window.location.href='/galeria/informacion-pago?method=${method.id}'`}
-      >
-        <span class="text-2xl">{method.icon}</span>
-        <span class="font-mono">{method.name}</span>
-      </button>
+    {paymentMethods.map((method) => (
+      method.id === 'mercadopago' ? (
+        <MercadoPagoButton 
+          client:visible
+          title="Cuadro Abstracto Premium" 
+          price={15000}
+          quantity={1}
+        />
+      ) : (
+        <button
+          class="w-full brutalist-border p-4 flex items-center space-x-4 hover:text-kaya-accent"
+          onclick={`window.location.href='/galeria/informacion-pago?method=${method.id}'`}
+        >
+          <span class="text-2xl">{method.icon}</span>
+          <span class="font-mono">{method.name}</span>
+        </button>
+      )
     ))}
   </div>
 </div>
