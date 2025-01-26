@@ -29,10 +29,6 @@ const featuredProducts = products;
       margin-bottom: 2rem;
       padding: 2rem;
       position: relative;
-      z-index: 2;
-      transition: all 0.3s ease;
-      display: inline-block;
-      width: auto;
     }
 
     .glass-section:hover {
@@ -292,7 +288,7 @@ const featuredProducts = products;
       </div>
     </div>
     <video 
-      class="absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-70" 
+      class="fixed top-0 left-0 w-full h-full object-cover z-[-1] opacity-70 mix-blend-normal" 
       autoplay 
       loop 
       muted 

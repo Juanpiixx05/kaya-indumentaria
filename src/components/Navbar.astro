@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import CartButton from './CartButton.astro';
 
 const navItems = [
   { name: 'Inicio', path: '/' },
@@ -22,8 +23,9 @@ const socialLinks = [
         <a href="/" class="text-2xl font-neue font-bold container mx-auto brutalist-border">kaya.indumentaria</a>
       </div>
 
-      <!-- Theme Toggle -->
-      <div class="flex items-center">
+      <!-- Theme Toggle and Cart -->
+      <div class="flex items-center gap-4">
+        <CartButton />
         <ThemeToggle />
       </div>
 
@@ -147,8 +149,8 @@ const socialLinks = [
   // Close menu when clicking outside
   document.addEventListener('click', (event) => {
     if (mobileMenu?.classList.contains('show') && 
-        !menuToggle?.contains(event.target) && 
-        !mobileMenu?.contains(event.target)) {
+        !menuToggle?.contains(event.target as HTMLElement) && 
+        !mobileMenu?.contains(event.target as HTMLElement)) {
       mobileMenu.classList.remove('show');
       setTimeout(() => {
         mobileMenu.classList.add('hidden');
