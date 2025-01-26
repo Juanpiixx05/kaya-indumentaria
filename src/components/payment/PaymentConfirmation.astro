@@ -1,21 +1,48 @@
 ---
+// Importación del componente ThemeToggle (actualmente no utilizado en este componente)
 import ThemeToggle from '../ThemeToggle.astro';
 ---
+
+<!-- 
+  Contenedor principal de la confirmación de pago
+  - Centrado con ancho máximo
+  - Estilo de borde brutalist
+  - Fondo oscuro semi-transparente
+  - Animación de aparición suave 
+-->
 <div class="max-w-2xl mx-auto p-6 brutalist-border bg-kaya-dark/50" data-aos="fade-up">
+  <!-- Sección central con elementos de confirmación -->
   <div class="text-center space-y-6">
+    <!-- Ícono de confirmación (checkmark) -->
     <div class="text-6xl mb-4">✅</div>
+    
+    <!-- Título de confirmación de pago -->
     <h2 class="text-2xl font-bold">¡Pago Confirmado!</h2>
+    
+    <!-- Mensaje de confirmación -->
     <p class="font-mono">Tu pedido ha sido procesado exitosamente.</p>
     
+    <!-- 
+      Sección de detalles del pedido
+      - Contenedor con borde brutalist
+      - Información estática del pedido 
+    -->
     <div class="brutalist-border p-4 mt-8">
       <h3 class="text-xl font-bold mb-4">Detalles del Pedido</h3>
       <div class="space-y-2 font-mono">
+        <!-- Detalles específicos del pedido (actualmente hardcodeados) -->
         <p>Número de Orden: #KY12345</p>
         <p>Estado: Procesando</p>
         <p>Tiempo estimado de entrega: 3-5 días hábiles</p>
       </div>
     </div>
 
+    <!-- 
+      Botón para volver a la galería
+      - Estilo de enlace con borde brutalist
+      - Cambio de color al pasar el mouse
+      - Dirige al usuario de vuelta a la página de galería 
+    -->
     <a
       href="/galeria"
       class="inline-block brutalist-border py-2 px-4 font-mono hover:text-kaya-accent mt-6"

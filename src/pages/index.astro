@@ -268,7 +268,29 @@ const featuredProducts = products;
       }
   </style>
 
-  <section class="y2k-hero relative">
+  <section class="y2k-hero relative flex items-center overflow-hidden will-change-transform">
+    <div class="hero-images absolute left-0 bottom-0 z-10 flex items-end gap-4 pl-8 pb-8">
+      <div class="glass-image-container bg-white/20 backdrop-blur-lg rounded-lg p-0 shadow-lg relative w-[600px] h-[500px] overflow-hidden">
+        <img 
+          src="/buzo-riquelme-Photoroom.png" 
+          alt="Buzo Riquelme" 
+          width="500"
+          height="auto"
+          class="absolute bottom-0 left-0 w-full h-full object-contain transform -rotate-6 -translate-x-12 translate-y-12 hover:scale-105 transition-transform duration-300 z-0" 
+          style="will-change: transform;"
+          loading="eager"
+        />
+        <img 
+          src="/saitama-mockup-Photoroom.png" 
+          alt="Saitama Mockup" 
+          width="500"
+          height="auto"
+          class="absolute bottom-0 right-0 w-full h-full object-contain hover:scale-105 transition-transform duration-300 z-10" 
+          style="will-change: transform;"
+          loading="lazy"
+        />
+      </div>
+    </div>
     <video 
       class="absolute top-0 left-0 w-full h-full object-cover z-[-1] opacity-70" 
       autoplay 

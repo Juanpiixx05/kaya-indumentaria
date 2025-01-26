@@ -10,6 +10,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+---
 
 <!doctype html>
 <html lang="es">
@@ -24,10 +25,6 @@ const { title } = Astro.props;
     <Navbar />
     <main>
       <slot />
-      <div class="hero-images">
-        <img src="/buzo-riquelme-Photoroom.png" alt="Buzo Riquelme" />
-        <img src="/saitama-mockup.png" alt="Saitama Mockup" />
-      </div>
     </main>
     <Footer />
     <style>
