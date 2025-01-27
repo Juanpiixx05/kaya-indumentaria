@@ -42,12 +42,13 @@ const MercadoPagoButton = ({ title, price, quantity = 1 }) => {
   };
 
   return (
-    <button
+    <button 
       onClick={handlePayment}
       disabled={loading}
-      className={`bg-[#00B1EA] hover:bg-[#0098C7] text-white font-bold py-3 px-6 rounded-lg
-        transition-colors duration-300 ${loading ? 'opacity-50 cursor-wait' : ''}`}
+      className={`w-full brutalist-border p-4 flex items-center space-x-4 hover:text-kaya-accent
+        ${loading ? 'opacity-50 cursor-wait' : ''}`}
     >
+      <span className="text-2xl">📲</span> {/* Icono agregado aquí */}
       {loading ? 'Procesando...' : 'Pagar con Mercado Pago'}
     </button>
   );
