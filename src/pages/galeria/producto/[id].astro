@@ -3,6 +3,7 @@
 import Layout from '../../../layouts/Layout.astro';
 import ProductDetail from '../../../components/ProductDetail.astro';
 import { products } from '../../../data/products';
+export const prerender = true;
 
 // Generación de rutas estáticas para cada producto
 export function getStaticPaths() {
