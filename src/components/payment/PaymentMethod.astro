@@ -14,12 +14,14 @@ const paymentMethods = [
   <div class="space-y-4">
     {paymentMethods.map((method) => (
       method.id === 'mercadopago' ? (
+        <div class="w-full p-4 flex items-center space-x-4 hover:text-kaya-accent">
         <MercadoPagoButton 
           client:visible
           title="Cuadro Abstracto Premium" 
           price={15000}
           quantity={1}
         />
+        </div>
       ) : (
         <button
           class="w-full brutalist-border p-4 flex items-center space-x-4 hover:text-kaya-accent"

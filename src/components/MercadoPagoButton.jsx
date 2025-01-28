@@ -31,6 +31,7 @@ const MercadoPagoButton = ({ title, price, quantity = 1 }) => {
 
       // Redirección
       const { init_point } = await response.json();
+      console.log("Redirigiendo a:", init_point);
       window.location.href = init_point;
 
     } catch (error) {
