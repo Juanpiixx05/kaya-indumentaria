@@ -1,15 +1,35 @@
 ---
 // filepath: /d:/DOCUMENTOS/Programando/kaya-indumentaria/src/components/gallery/ProductGrid.astro
 import ProductCard from '../ProductCard.astro';
-import { products } from '../../data/products';
+import pool from '../../config/db';
 
-const productList = products;
+let products = [];
+let error = null;
+
+try {
+  const result = await pool.query('SELECT id, nombre as name, imagen as image, price FROM productos');
+  products = result.rows;
+} catch (e) {
+  console.error('Error al cargar productos:', e);
+  error = e.message;
+}
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-  {productList.map(product => (
-    <div data-aos="fade-up">
-      <ProductCard {...product} />
+{error && (
+  <div class="text-center p-8">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-6 py-4 rounded-lg">
+      <p class="font-bold text-lg mb-2">Error al cargar productos</p>
+      <p>{error}</p>
     </div>
-  ))}
-</div>
+  </div>
+)}
+
+{!error && (
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {products.map(product => (
+      <div data-aos="fade-up">
+        <ProductCard {...product} />
+      </div>
+    ))}
+  </div>
+)}
