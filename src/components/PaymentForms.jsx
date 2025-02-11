@@ -34,7 +34,7 @@ const PaymentForms = () => {
     }
 
     return (
-        <div className="card">
+        <div className="card ">
             <div className="card-body">
 
                 <Cards

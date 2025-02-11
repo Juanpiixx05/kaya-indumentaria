@@ -16,6 +16,7 @@
     "@astrojs/tailwind": "^5.0.0",
     "@fontsource/space-grotesk": "^5.0.16",
     "@fontsource/space-mono": "^5.0.16",
+    "@sendgrid/mail": "^8.1.4",
     "@splinetool/react-spline": "^4.0.0",
     "@supabase/supabase-js": "^2.48.1",
     "@types/react": "^18.2.48",

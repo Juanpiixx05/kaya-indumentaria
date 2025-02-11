@@ -60,7 +60,7 @@
             onclick="removeFromCart(${item.id})"
             class="text-red-500 hover:text-red-700"
           >
-            ×
+            X
           </button>
         </div>
       `).join('');
@@ -112,8 +112,7 @@
       }
       
       // Aquí puedes agregar la lógica para procesar la compra
-      const message = encodeURIComponent(`Hola! Me gustaría comprar los siguientes productos:\n\n${cart.map(item => `- ${item.name}: $${item.price}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0)}`);
-      window.open(`https://wa.me/5491138229376?text=${message}`, '_blank');
+      window.location.href = '/checkout';
     });
   }
   

@@ -4,7 +4,7 @@ import MercadoPagoButton from 'src/components/MercadoPagoButton.jsx';
 const paymentMethods = [
   { id: 'card', name: 'Tarjeta de Crédito/Débito', icon: '💳' },
   { id: 'transfer', name: 'Transferencia Bancaria', icon: '🏦' },
-  { id: 'mercadopago', name: 'MercadoPago', icon: '📲' },
+  { id: 'mercadopago', name: 'Mercado Pago', icon: '📲' },
 ];
 ---
 
@@ -14,7 +14,7 @@ const paymentMethods = [
   <div class="space-y-4">
     {paymentMethods.map((method) => (
       method.id === 'mercadopago' ? (
-        <div class="w-full p-4 flex items-center space-x-4 hover:text-kaya-accent">
+        <div>
         <MercadoPagoButton 
           client:visible
           title="Cuadro Abstracto Premium" 

@@ -23,12 +23,6 @@ const socialLinks = [
         <a href="/" class="text-2xl font-neue font-bold container mx-auto brutalist-border">kaya.indumentaria</a>
       </div>
 
-      <!-- Theme Toggle and Cart -->
-      <div class="flex items-center gap-4">
-        <CartButton />
-        <ThemeToggle />
-      </div>
-
       <!-- Mobile menu button -->
       <button id="menu-toggle" class="md:hidden brutalist-border p-2 backdrop-blur-sm">
         <span class="sr-only">Menu</span>
@@ -44,14 +38,11 @@ const socialLinks = [
             {item.name}
           </a>
         ))}
-        <div class="flex items-center space-x-4">
-          {socialLinks.map(link => (
-            <a href={link.url} target="_blank" rel="noopener noreferrer" 
-               class="brutalist-border p-2 hover:text-kaya-accent">
-              {link.name}
-            </a>
-          ))}
-        </div>
+              <!-- Theme Toggle and Cart -->
+      <div class="flex items-center gap-4">
+        <CartButton />
+        <ThemeToggle />
+      </div>
       </div>
     </div>
   </div>

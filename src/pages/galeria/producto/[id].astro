@@ -1,6 +1,7 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import ProductDetail from '../../../components/ProductDetail.astro';
+import ProductCarousel from '../../../components/ProductCarousel.astro';
 import supabase from '../../../config/db';
 
 // Desactivar pre-renderizado para permitir rutas dinámicas
@@ -44,5 +45,6 @@ if (!product) {
 <Layout title={product.name}>
   <div class="pt-24 pb-12">
     <ProductDetail {...product} />
+    <ProductCarousel />
   </div>
 </Layout>

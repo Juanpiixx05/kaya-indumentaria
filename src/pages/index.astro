@@ -7,6 +7,62 @@ const featuredProducts = products;
 ---
 
 <Layout title="Inicio">
+  <section class="y2k-hero">
+    <video 
+      class="video-background"
+      autoplay 
+      loop 
+      muted 
+      playsinline
+    >
+      <source src="/kaya-ind-bckg2.webm" type="video/webm" />
+    </video>
+
+    <div class="hero-image-container relative z-10 glass-section">
+      <img 
+        src="/products/hero-Photoroom.png" 
+        alt="Imagen de fondo"
+        class="hero-main-image"
+      >
+    </div>
+
+    <div class="hero-content relative z-10 text-white">
+      <h1 class="hero-title text-5xl font-bold mb-4">Kaya Indumentaria</h1>
+      <p class="hero-subtitle text-2xl mb-8">Vanguardia en estilo</p>
+      <div class="hero-buttons">
+        <a href="/contacto" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8 mr-4">Contacto</a>
+        <a href="/galeria" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8">Galería</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de productos destacados -->
+  <section class="featured-products relative z-10">
+    <div class="section-spacing">
+      <div class="glass-section">
+        <h2 class="text-4xl font-bold mb-12 brutalist-border inline-block px-4 py-2" data-aos="fade-right">
+          DESTACADOS
+        </h2>
+        <div class="product-grid">
+          {featuredProducts.map((product, index) => (
+            <div class="product-card-wrapper" data-aos="fade-up" data-aos-delay={index * 100}>
+              <ProductCard {...product} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección con enlace a la galería -->
+  <div class="container mx-auto px-4 text-center pb-20 relative z-10" data-aos="fade-up">
+    <div>
+      <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block">
+        EXPLORAR COLECCIÓN
+      </a>
+    </div>
+  </div>
+
   <style>
     :root {
       --shadow-elevation-low: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -57,6 +113,7 @@ const featuredProducts = products;
       color: var(--text-color);
       overflow: hidden;
       padding: 2rem;
+      isolation: isolate; /* Crear un nuevo contexto de apilamiento */
     }
 
     @media (max-width: 1024px) {
@@ -76,37 +133,20 @@ const featuredProducts = products;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
-      opacity: 0.5;
-      filter: blur(2px) brightness(0.9);
-    }
-
-    @media (max-width: 1024px) {
-      .video-background {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 90%;
-        height: 90%;
-        border-radius: 16px;
-        object-fit: cover;
-        z-index: -1;
-        opacity: 0.5;
-        filter: blur(2px) brightness(0.9);
-        box-shadow: var(--shadow-elevation-medium);
-      }
+      z-index: -1;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 1;
       max-width: 500px;
       text-align: right;
       margin-bottom: 2rem;
       margin-right: 2rem;
-      background: rgba(var(--bg-color-rgb), 0.6);
-      backdrop-filter: blur(15px);
+      background: rgba(var(--bg-color-rgb), 0.8);
+      backdrop-filter: blur(10px);
       border-radius: 16px;
       border: 1px solid rgba(var(--text-color-rgb), 0.1);
       box-shadow: var(--shadow-elevation-medium);
@@ -128,35 +168,20 @@ const featuredProducts = products;
     }
 
     .hero-title {
-      font-size: 3rem;
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 900;
       line-height: 1.2;
       margin-bottom: 1rem;
       text-transform: uppercase;
       color: var(--text-color);
-      opacity: 1;
-    }
-
-    @media (max-width: 1024px) {
-      .hero-title {
-        font-size: 2rem;
-        text-align: center;
-      }
     }
 
     .hero-subtitle {
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 3vw, 1.5rem);
       margin-bottom: 2rem;
       color: var(--text-color);
       font-style: italic;
-      opacity: 0.8;
-    }
-
-    @media (max-width: 1024px) {
-      .hero-subtitle {
-        font-size: 1rem;
-        text-align: center;
-      }
+      opacity: 0.9;
     }
 
     .hero-buttons {
@@ -177,7 +202,6 @@ const featuredProducts = products;
     .hero-button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background-color: transparent;
       color: var(--text-color);
       text-decoration: none;
       font-weight: bold;
@@ -185,33 +209,13 @@ const featuredProducts = products;
       border: 2px solid var(--text-color);
       position: relative;
       transition: all 0.3s ease;
-      z-index: 1;
       backdrop-filter: blur(5px);
       background: rgba(var(--text-color-rgb), 0.1);
-      overflow: hidden;
-    }
-
-    .hero-button::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: rgba(var(--text-color-rgb), 0.05);
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      backdrop-filter: blur(3px);
-    }
-
-    .hero-button:hover::before {
-      opacity: 1;
     }
 
     .hero-button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transform: translate(-4px, -4px);
+      box-shadow: 4px 4px 0 rgb(165, 3, 3);
     }
 
     @media (max-width: 1024px) {
@@ -222,6 +226,18 @@ const featuredProducts = products;
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
       }
+    }
+
+    .brutalist-border {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      border: 2px solid currentColor;
+      transition: all 0.3s ease;
+    }
+
+    .brutalist-border:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 4px 4px 0 rgb(165, 3, 3);
     }
 
     .product-grid {
@@ -251,63 +267,40 @@ const featuredProducts = products;
         transform: none;
       }
     }
-    .brutalist-border {
-        background-color: var(--bg-color);
-        color: var(--text-color);
-        border: 2px solid currentColor;
-        transition: all 0.3s ease;
-      }
 
-      .brutalist-border:hover {
-        transform: translate(-4px, -4px);
-        box-shadow: 4px 4px 0 rgb(165, 3, 3);
+    .hero-image-container {
+      position: absolute;
+      left: 1%;
+      top: 17%;
+      max-width: 50%;
+      padding-left: 2rem;
+      padding: 0;
+    }
+
+    .hero-main-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      filter: brightness(0.95);
+      transform-origin: center;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-image-container {
+        position: relative;
+        top: 0;
+        transform: none;
+        width: 80%;
+        margin: 2rem auto;
+        padding-left: 0;
       }
+    }
+
+    @media (max-width: 640px) {
+      .hero-image-container {
+        width: 90%;
+      }
+    }
   </style>
-
-  <section class="y2k-hero relative">
-    <video 
-      class="fixed top-0 left-0 w-full h-full object-cover z-[-1] opacity-70 mix-blend-normal" 
-      autoplay 
-      loop 
-      muted 
-      playsinline
-    >
-      <source src="/kaya-ind-bckg2.webm" type="video/webm" />
-    </video>
-    <div class="hero-content relative z-10 text-white">
-      <h1 class="hero-title text-5xl font-bold mb-4">Kaya Indumentaria</h1>
-      <p class="hero-subtitle text-2xl mb-8">Vanguardia en estilo</p>
-      <div class="hero-buttons">
-        <a href="/contacto" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8 mr-4">Contacto</a>
-        <a href="/galeria" class="hero-button brutalist-border px-8 py-4 text-xl inline-block mt-8">Galería</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección de productos destacados -->
-  <section class="featured-products relative z-10">
-    <div class="section-spacing">
-      <div class="glass-section">
-        <h2 class="text-4xl font-bold mb-12 brutalist-border inline-block px-4 py-2" data-aos="fade-right">
-          DESTACADOS
-        </h2>
-        <div class="product-grid">
-          {featuredProducts.map((product, index) => (
-            <div class="product-card-wrapper" data-aos="fade-up" data-aos-delay={index * 100}>
-              <ProductCard {...product} />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sección con enlace a la galería -->
-  <div class="container mx-auto px-4 text-center pb-20 relative z-10" data-aos="fade-up">
-    <div class="glass-section">
-      <a href="/galeria" class="brutalist-border px-8 py-4 text-xl inline-block">
-        EXPLORAR COLECCIÓN
-      </a>
-    </div>
-  </div>
 </Layout>
