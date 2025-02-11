@@ -1,27 +1,14 @@
-import pkg from 'pg';
-const { Pool } = pkg;
+import { createClient } from '@supabase/supabase-js';
 
-const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'kaya_indumentaria',
-  password: '1234',
-  port: 5432,
+const supabaseUrl = 'https://knvzyvyxgebojcytuldr.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtudnp5dnl4Z2Vib2pjeXR1bGRyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzkyMjM0MjAsImV4cCI6MjA1NDc5OTQyMH0.mm6ZRtpDdihbc5zMQYHSV6n-tlGP99Hi7HW0S350t0g';
+
+const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true
+  }
 });
 
-// Evento cuando se crea una nueva conexión
-pool.on('connect', () => {
-  console.log('Base de datos: Nueva conexión establecida');
-});
+export default supabase;
 
-// Evento cuando hay un error
-pool.on('error', (err) => {
-  console.error('Base de datos: Error inesperado:', err);
-});
-
-// Probar la conexión inmediatamente
-pool.query('SELECT NOW()')
-  .then(() => console.log('Base de datos: Conexión inicial exitosa'))
-  .catch(err => console.error('Base de datos: Error en la conexión inicial:', err));
-
-export default pool;
