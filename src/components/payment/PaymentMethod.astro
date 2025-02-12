@@ -25,7 +25,7 @@ const paymentMethods = [
       ) : (
         <button
           class="w-full brutalist-border p-4 flex items-center space-x-4 hover:text-kaya-accent"
-          onclick={`window.location.href='/galeria/informacion-pago?method=${method.id}'`}
+          onclick={`window.location.href='src/components/payment/PaymentMethod.astro?method=${method.id}'`}
         >
           <span class="text-2xl">{method.icon}</span>
           <span class="font-mono">{method.name}</span>
