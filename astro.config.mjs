@@ -4,9 +4,15 @@ import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel/static';
 
 export default defineConfig({
-  output: 'static', // Asegúrate de que sea 'static'
+  output: 'static',
   adapter: vercel(),
-  integrations: [react(), tailwind()],
+  integrations: [
+    react({
+      include: ['**/*.jsx', '**/*.tsx'],
+      resolveClientOnlyImports: true
+    }),
+    tailwind()
+  ],
   image: {
     service: {
       entrypoint: 'astro/assets/services/sharp'
@@ -18,10 +24,14 @@ export default defineConfig({
     },
     server: {
       host: 'localhost',
-      port: 3000,
-      strictPort: true,
-      watch: {
-        usePolling: true
+      port: 3000
+    },
+    optimizeDeps: {
+      include: ['react', 'react-dom']
+    },
+    build: {
+      rollupOptions: {
+        external: ['astro:content']
       }
     }
   }
